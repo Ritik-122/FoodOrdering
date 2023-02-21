@@ -4,6 +4,7 @@ import Cart from './components/Cart/Cart.js';
 
 
 import Header from './components/Layout/Header.js';
+import CartProvider from './store/CartProvider.js';
 
 function App() {
   const [cartIsShown,setCartShown]=useState(false)
@@ -14,15 +15,15 @@ function App() {
     setCartShown(false)
   ]
   return (
-    <React.Fragment>
+    <CartProvider>
+    
     { cartIsShown &&<Cart onHideCart={hideCart} />}
     <Header onShowCart={showCartHandler}  />
     <main>
     <Meals />
 
     </main>
-    
-    </React.Fragment>
+    </CartProvider>
   );
 }
 
